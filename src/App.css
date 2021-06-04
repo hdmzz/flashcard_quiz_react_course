@@ -7,11 +7,56 @@ body{
     align-items: center;
     position: relative;
     border-radius: .25rem;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 5px 2px #0000004d;
     background-color: white;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    /* pas de height et width ici
+    car on va le gérer de facon dynamique */
+    height: 150px;
+    width: 150px;
+    /* flip effect ----> on va declarer une variable qui sera changer lorsque la classe change 
+    meme chose pour le deplacement sur l'axe Y de la carte au survol*/
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+    transition: 200ms;
+}
+
+.card:hover{
+    box-shadow:  0 0 5px 2px rgba(0, 0, 0, .7);
+    --translate-y: -2px;
+}
+
+.card.flip{
+    /* on change a variable pour passer de 0 à 180deg */
+    --rotate-y: 180deg;
 }
 
 .card .front,
 .card .back{
     position: absolute;
+    padding: 1rem;
+    /* le revers ne devrait pas pouvoir etre vu lorsque l'on est sur la partie front 
+    donc backface visibilyti */
+    backface-visibility: hidden;
+
+}
+
+.card .front{
+    /* on aligne le texte sur la gauche */
+    left: 0;
+}
+
+.card .back{
+    /* on retourne la reponse car la carte sera retournée elle meme */
+    transform: rotateY(180deg);
+}
+
+.flashCardOptions {
+    margin-top: .5rem;
+}
+
+.flashCardOption {
+    margin-top: .25rem;
+    color: #555;
+    font-size: .75rem;
 }
