@@ -1,6 +1,20 @@
 body{
     background-color: #C8D0D2;
+    margin: 0;
 }
+
+.container {
+    max-width: 900px;
+    margin: 1rem 2rem;
+}
+
+.cardGrid{
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
 .card{
     display: flex;
     justify-content: center;
@@ -13,8 +27,9 @@ body{
     transform-style: preserve-3d;
     /* pas de height et width ici
     car on va le gérer de facon dynamique */
-    height: 150px;
-    width: 150px;
+    /* 
+    height: 200px;
+    width: 150px; */
     /* flip effect ----> on va declarer une variable qui sera changer lorsque la classe change 
     meme chose pour le deplacement sur l'axe Y de la carte au survol*/
     transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
@@ -59,4 +74,35 @@ body{
     margin-top: .25rem;
     color: #555;
     font-size: .75rem;
+}
+
+.header {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow:  0 0 5px 2px #0000004d;
+    padding: 0 1.5rem;
+    background-color: white;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+}
+
+.formGroup > label {
+    color: #777;
+    font-size: .80rem;
+    margin-bottom:  .25rem;
+}
+
+.btn {
+    background-color: hsl(200, 100%, 50%);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: hsl(200, 100%, 40%);
 }
